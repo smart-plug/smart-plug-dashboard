@@ -15,3 +15,15 @@ $ npm install
 # Start server 
 $ npm start
 ```
+
+## Docker image
+
+```bash
+docker build . -t smart-plug-dashboard
+```
+
+```bash
+docker-compose up
+```
+
+The web page will be accessed on localhost:8080.
