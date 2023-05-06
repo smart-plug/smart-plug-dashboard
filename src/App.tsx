@@ -1,8 +1,11 @@
 import React from 'react';
-import logo from './assets/logo.svg';
+import logo from './Assets/logo.svg';
+import { Routes, Route } from 'react-router-dom';
+import Dashboard from './Pages/Dashboard';
+import './index.css';
 import './App.css';
 
-const App: React.FC = () => {
+const Home: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
@@ -20,6 +23,17 @@ const App: React.FC = () => {
         </a>
       </header>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </>
   );
 };
 
