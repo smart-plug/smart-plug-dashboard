@@ -1,0 +1,9 @@
+.Dashboard {
+    display: grid;
+    grid-template-columns: 288px 1fr;
+    grid-template-areas: 
+        "Menu Main";
+    justify-items: start;
+    width: 100%;
+    height: 100%;
+}

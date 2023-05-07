@@ -1,9 +1,13 @@
 import React from 'react';
+import Menu from '../../Layouts/Menu';
+import './index.css';
+import Main from '../../Layouts/Main';
 
 const Dashbboard: React.FC = () => {
   return (
     <div className="Dashboard">
-      <h1>Dashboard</h1>
+      <Menu />
+      <Main />
     </div>
   );
 };

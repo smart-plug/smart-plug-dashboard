@@ -1,0 +1,17 @@
+.header {
+    grid-area: Header;
+}
+
+h1 {    
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 30px;
+    
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.1px;
+    
+    color: #472D68;
+}
