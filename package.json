@@ -18,8 +18,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint": "eslint --ext .js,.ts src/",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "lint": "eslint --ext .jsx,.tsx src/",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(jsx|tsx|json)\"",
     "prepare": "husky install",
     "pre-commit": "lint-staged"
   },
