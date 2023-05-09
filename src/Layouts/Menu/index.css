@@ -34,4 +34,39 @@
   grid-area: Buttons;
   padding: 32px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+  flex-direction: column;
+}
+
+.Button {
+  width: 80%;
+  height: 40px;
+  margin: 5px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  padding: 0px 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  letter-spacing: 0.1px;
+  color: #6750a4;
+  background: #ffffff;
+  border-radius: 100px;
+}
+
+.Button p {
+  width: 80%;
+}
+
+.Button#button_selected {
+  background: rgba(103, 80, 164, 0.12);
 }
