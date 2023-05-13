@@ -341,6 +341,7 @@ const Reports: React.FC = () => {
       <div className="TopGrid">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
+            sx={{ marginRight: 2 }}
             className="DatePicker"
             label="Data inicial"
             defaultValue={dayjs()}
@@ -349,6 +350,7 @@ const Reports: React.FC = () => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
+            sx={{ marginRight: 2 }}
             className="DatePicker"
             label="Data final"
             defaultValue={dayjs()}
@@ -377,8 +379,8 @@ const Reports: React.FC = () => {
         </FormControl>
       </div>
 
-      <div className="LineChartGrid">
-        <Card className="Card">
+      <div className="MiddleGrid">
+        <Card sx={{ padding: 2, marginRight: 5 }}>
           <CardContent sx={{ width: 950, height: 330 }}>
             <Typography variant="h5" component="div">
               consumo
@@ -386,15 +388,57 @@ const Reports: React.FC = () => {
             <LineChart data={data2} />
           </CardContent>
         </Card>
-      </div>
 
-      <div className="PieChartGrid">
-        <Card className="Card">
-          <CardContent sx={{ width: 500, height: 330 }}>
+        <Card sx={{ padding: 2 }}>
+          <CardContent sx={{ width: 400, height: 330 }}>
             <Typography variant="h5" component="div">
               consumo
             </Typography>
             <PieChart data={data} />
+          </CardContent>
+        </Card>
+      </div>
+
+      <div className="BottomGrid">
+        <Card sx={{ width: 200, height: 160, padding: 2, marginRight: 5 }}>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              acumulado
+            </Typography>
+            <Typography variant="h3" component="div">
+              30
+            </Typography>
+            <Typography variant="h6" component="div">
+              kWh
+            </Typography>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ width: 200, height: 160, padding: 2, marginRight: 5 }}>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              variação
+            </Typography>
+            <Typography variant="h3" component="div">
+              3
+            </Typography>
+            <Typography variant="h6" component="div">
+              kWh
+            </Typography>
+          </CardContent>
+        </Card>
+
+        <Card sx={{ width: 240, height: 160, padding: 2 }}>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              custo
+            </Typography>
+            <Typography variant="h3" component="div">
+              24,90
+            </Typography>
+            <Typography variant="h6" component="div">
+              R$
+            </Typography>
           </CardContent>
         </Card>
       </div>
