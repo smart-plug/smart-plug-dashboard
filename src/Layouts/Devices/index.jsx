@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 
+import Tooltip from '@mui/material/Tooltip';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
@@ -21,9 +22,11 @@ const Devices: React.FC = () => {
             </Typography>
           </Grid>
           <Grid item xs={1} alignItems="end">
-            <IconButton aria-label="add">
-              <AddIcon />
-            </IconButton>
+            <Tooltip title="Adicionar novo dispositivo">
+              <IconButton aria-label="add" color="primary">
+                <AddIcon />
+              </IconButton>
+            </Tooltip>
           </Grid>
         </Grid>
         <DevicesTable />

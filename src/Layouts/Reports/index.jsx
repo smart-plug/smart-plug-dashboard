@@ -400,7 +400,7 @@ const Reports: React.FC = () => {
       </div>
 
       <div className="BottomGrid">
-        <Card sx={{ width: 200, height: 160, padding: 2, marginRight: 5 }}>
+        <Card sx={{ width: 200, height: 180, padding: 2, marginRight: 5 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               acumulado
@@ -414,7 +414,7 @@ const Reports: React.FC = () => {
           </CardContent>
         </Card>
 
-        <Card sx={{ width: 200, height: 160, padding: 2, marginRight: 5 }}>
+        <Card sx={{ width: 200, height: 180, padding: 2, marginRight: 5 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               variação
@@ -428,7 +428,7 @@ const Reports: React.FC = () => {
           </CardContent>
         </Card>
 
-        <Card sx={{ width: 240, height: 160, padding: 2 }}>
+        <Card sx={{ width: 240, height: 180, padding: 2 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               custo

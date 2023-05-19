@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Tooltip from '@mui/material/Tooltip';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -37,23 +38,27 @@ export default function BasicTable() {
         <TableBody>
           {rows.map(row => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell>
-                <Switch />
+                <Switch enabled={row.enabled} />
               </TableCell>
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>
-                <IconButton aria-label="edit">
-                  <EditIcon />
-                </IconButton>
+                <Tooltip title="Editar">
+                  <IconButton aria-label="edit" color="primary">
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
               <TableCell>
-                <IconButton aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
+                <Tooltip title="Deletar">
+                  <IconButton aria-label="delete" color="primary">
+                    <DeleteIcon />
+                  </IconButton>
+                </Tooltip>
               </TableCell>
             </TableRow>
           ))}
