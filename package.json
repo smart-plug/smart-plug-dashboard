@@ -10,6 +10,7 @@
     "@material/web": "^1.0.0-pre.7",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.3",
+    "@mui/material-next": "^6.0.0-alpha.85",
     "@mui/x-date-pickers": "^6.3.1",
     "@nivo/core": "^0.83.0",
     "@nivo/line": "^0.83.0",

@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Header from '../../Components/Header';
+import Button from '@mui/material-next/Button';
+
 import './index.css';
 
 const Login: React.FC = () => {
+  const [password, setPassword] = useState('');
+  const [user, setUser] = useState('');
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(user);
+    console.log(password);
+  };
+
   return (
     <div className="Main">
       <div className="Login">
@@ -48,6 +58,7 @@ const Login: React.FC = () => {
               </div>
             </Header>
             <Box
+              onSubmit={handleSubmit}
               component="form"
               className="BoxForm"
               sx={{
@@ -56,20 +67,37 @@ const Login: React.FC = () => {
               noValidate
               autoComplete="off"
             >
-              <div>
+              <div className="CentralizedRow">
                 <TextField
+                  className="BoxFormInput"
                   error={false}
                   id="outlined-required"
                   label="Usuário"
+                  onChange={event => setUser(event.target.value)}
+                  value={user}
                 />
               </div>
-              <div>
+              <div className="CentralizedRow">
                 <TextField
                   error={false}
+                  className="BoxFormInput"
                   id="outlined-required"
                   type="password"
                   label="Senha"
+                  onChange={event => setPassword(event.target.value)}
+                  value={password}
                 />
+              </div>
+              <div className="CentralizedRow">
+                <Button
+                  size="large"
+                  variant="filled"
+                  className="LoginButton"
+                  type="submit"
+                  value="submit"
+                >
+                  Entrar{' '}
+                </Button>
               </div>
             </Box>
           </div>

@@ -19,12 +19,12 @@
 }
 
 .Login .Forms {
-    height: 100%;
-    width: 60%;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  height: 100%;
+  width: 40%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .Login .Forms .Box {
@@ -36,3 +36,24 @@
   flex-direction: column;
 }
 
+.LoginButton {
+  width: 90%;
+  margin-top: 10px;
+}
+
+.BoxForm {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.BoxFormInput {
+  width: 90% !important;
+}
+
+.CentralizedRow {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
