@@ -10,19 +10,8 @@ import Paper from '@mui/material/Paper';
 import Switch from '@mui/material/Switch';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 
-function createData(enabled, id, name) {
-  return { enabled, id, name };
-}
-
-const rows = [
-  createData(true, 'SJ287DSKSJ', 'Geladeira'),
-  createData(true, 'NFSD6343N6', 'Televisão'),
-  createData(false, 'ASDOI3TR68', 'Microondas'),
-];
-
-export default function BasicTable() {
+export default function BasicTable({ devices, onStateChanged, onDelete }) {
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -32,30 +21,31 @@ export default function BasicTable() {
             <TableCell sx={{ width: 150 }}>Identificador</TableCell>
             <TableCell>Nome</TableCell>
             <TableCell sx={{ width: 30 }}></TableCell>
-            <TableCell sx={{ width: 30 }}></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {devices.map(device => (
             <TableRow
-              key={row.id}
+              key={device.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell>
-                <Switch enabled={row.enabled} />
+                <Switch
+                  checked={device.enabled}
+                  onChange={event => {
+                    onStateChanged(device.id, event.target.checked);
+                  }}
+                />
               </TableCell>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>
-                <Tooltip title="Editar">
-                  <IconButton aria-label="edit" color="primary">
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
-              </TableCell>
+              <TableCell>{device.id}</TableCell>
+              <TableCell>{device.name}</TableCell>
               <TableCell>
                 <Tooltip title="Deletar">
-                  <IconButton aria-label="delete" color="primary">
+                  <IconButton
+                    aria-label="delete"
+                    color="primary"
+                    onClick={() => onDelete(device.id)}
+                  >
                     <DeleteIcon />
                   </IconButton>
                 </Tooltip>
