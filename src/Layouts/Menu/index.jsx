@@ -33,29 +33,27 @@ const Menu: React.FC = ({ option, setOption }) => {
           inteligente
         </Typography>
       </Header>
-      <div className="Buttons">
-        <Button
-          value="Relatórios"
-          selected={option == 0}
-          onClick={() => setOption(0)}
-        >
-          <TrendingUpIcon />
-        </Button>
-        <Button
-          value="Dispositivos"
-          selected={option == 1}
-          onClick={() => setOption(1)}
-        >
-          <BoltIcon />
-        </Button>
-        <Button
-          value="Configurações"
-          selected={option == 2}
-          onClick={() => setOption(2)}
-        >
-          <SettingsIcon />
-        </Button>
-      </div>
+      <Button
+        value="Relatórios"
+        selected={option == 0}
+        onClick={() => setOption(0)}
+      >
+        <TrendingUpIcon />
+      </Button>
+      <Button
+        value="Dispositivos"
+        selected={option == 1}
+        onClick={() => setOption(1)}
+      >
+        <BoltIcon />
+      </Button>
+      <Button
+        value="Configurações"
+        selected={option == 2}
+        onClick={() => setOption(2)}
+      >
+        <SettingsIcon />
+      </Button>
     </div>
   );
 };
