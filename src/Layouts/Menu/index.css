@@ -1,41 +1,14 @@
 .Menu {
   position: relative;
-  display: grid;
-  grid-template-rows: 100px 1fr;
-  grid-template-areas:
-    'Header'
-    'Buttons';
-  justify-content: center;
-  grid-area: Menu;
+  display: flex;
+  flex-direction: column;
   width: 288px;
   height: 100%;
+  padding: 44px;
   padding-top: 80px;
   background: #ffffff;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
-
-  .Header > h1 {
-    width: 100%;
-  }
-
-  .Header > div {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    box-sizing: border-box;
-    justify-content: center;
-  }
-}
-
-.Buttons {
-  grid-area: Buttons;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 0px;
-  flex-direction: column;
 }
 
 .Button {
