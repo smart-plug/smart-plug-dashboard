@@ -1,0 +1,38 @@
+.Main {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+}
+
+.Login {
+  width: 80%;
+  height: 100%;
+  display: flex;
+}
+
+.Login #backgroundImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.Login .Forms {
+    height: 100%;
+    width: 60%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Login .Forms .Box {
+  height: 40%;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
