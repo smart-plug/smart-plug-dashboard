@@ -17,7 +17,7 @@ const Dashbboard: React.FC = () => {
       <div className="Dashboard">
         <Menu option={option} setOption={setOption} />
         <Main>
-          <Reports />
+          {option == 0 ? <Reports /> : option == 1 ? <Devices /> : <Settings />}
         </Main>
       </div>
     </Theme>
