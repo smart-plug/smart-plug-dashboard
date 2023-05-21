@@ -16,7 +16,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="Main">
+    <div className="LoginMain Main">
       <div className="Login">
         <div id="backgroundImage">
           <svg
