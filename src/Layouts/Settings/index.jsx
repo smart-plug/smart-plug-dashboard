@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import CardActions from '@mui/material/CardActions';
 
-const Settings: React.FC = () => {
+const Settings: React.FC = ({ unitkWh, setUnitkWh }) => {
   return (
     <Card sx={{ margin: 8 }}>
       <CardContent sx={{ padding: 6 }}>
@@ -18,7 +18,9 @@ const Settings: React.FC = () => {
           required
           id="outlined-required"
           label="Valor do kWh"
-          defaultValue="0.83"
+          defaultValue={0.83}
+          value={unitkWh}
+          onChange={event => setUnitkWh(event.target.value)}
           helperText="Valor unitário do kWh apresentado na sua conta de luz"
         />
       </CardContent>
