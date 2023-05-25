@@ -69,6 +69,18 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
             className="Select"
             multiple
             value={selectedDevices}
+            renderValue={selected => {
+              if (selected.length === 0) {
+                return <em>Dispositivos</em>;
+              }
+              return selected
+                .map(
+                  deviceId =>
+                    devices.filter(device => device.deviceId == deviceId)[0]
+                      .name,
+                )
+                .join(', ');
+            }}
             onChange={event => {
               setSelectedDevices(event.target.value);
               onFilterChange({
@@ -78,11 +90,16 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
               });
             }}
             input={<OutlinedInput label="Dispositivos" />}
-            renderValue={selected => selected.join(', ')}
           >
             {devices.map(device => (
-              <MenuItem key={device.id} value={device.name}>
-                <Checkbox checked={selectedDevices.indexOf(device.name) > -1} />
+              <MenuItem
+                key={device.deviceId}
+                value={device.deviceId}
+                renderValue={device.name}
+              >
+                <Checkbox
+                  checked={selectedDevices.indexOf(device.deviceId) > -1}
+                />
                 <ListItemText primary={device.name} />
               </MenuItem>
             ))}
