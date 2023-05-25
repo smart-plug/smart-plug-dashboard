@@ -64,7 +64,7 @@ const DeviceForm: React.FC = ({ open, onSave, onClose }) => {
             onClick={() => {
               if ((id != '') & (name != '')) {
                 resetState();
-                onSave({ enabled: false, id: id, name: name });
+                onSave({ enabled: false, deviceId: id, name: name });
               } else {
                 alert('Todos os campos são obrigatórios');
               }

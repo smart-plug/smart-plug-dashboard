@@ -3,16 +3,40 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Header from '../../Components/Header';
 import Button from '@mui/material-next/Button';
+import { useNavigate } from 'react-router-dom';
+
+import axios from 'axios';
 
 import './index.css';
 
+const baseUrl = 'http://191.235.46.49:3000';
+const authorization = 'smart_plug';
+
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [user, setUser] = useState('');
+
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(user);
-    console.log(password);
+
+    axios
+      .post(
+        `${baseUrl}/login`,
+        { username: user, password: password },
+        {
+          headers: {
+            authorization: authorization,
+          },
+        },
+      )
+      .then(response => {
+        console.log(response.data.response.user.userId);
+        navigate('/dashboard');
+      })
+      .catch(error => {
+        console.error(error);
+      });
   };
 
   return (

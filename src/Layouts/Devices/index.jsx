@@ -12,21 +12,25 @@ import Grid from '@mui/material/Grid';
 import DevicesTable from '../../Components/DevicesTable';
 import DeviceForm from '../../Components/DeviceForm';
 
-const Devices: React.FC = ({ devices, setDevices }) => {
+const Devices: React.FC = ({
+  devices,
+  setDevices,
+  onDeleteDevice,
+  onAddDevice,
+}) => {
   const [openAddDeviceForm, setOpenAddDeviceForm] = React.useState(false);
 
   const onAddDeviceClick = () => {
     setOpenAddDeviceForm(true);
   };
 
-  const onDeleteDevice = id => {
-    setDevices(devices.filter(device => device.id != id));
+  const onDeletedDevice = id => {
+    onDeleteDevice(id);
   };
 
   const onSaveAddDeviceForm = device => {
-    devices.push(device);
-    setDevices(devices);
     setOpenAddDeviceForm(false);
+    onAddDevice(device.deviceId, device.name);
   };
 
   const onCloseAddDeviceForm = () => {
@@ -34,7 +38,7 @@ const Devices: React.FC = ({ devices, setDevices }) => {
   };
 
   const onDeviceStateChanged = (id, enabled) => {
-    const index = devices.findIndex(d => d.id == id);
+    const index = devices.findIndex(d => d.deviceId == id);
     if (index != -1) {
       devices[index].enabled = enabled;
       setDevices(devices);
@@ -65,7 +69,7 @@ const Devices: React.FC = ({ devices, setDevices }) => {
         <DevicesTable
           devices={devices}
           onStateChanged={onDeviceStateChanged}
-          onDelete={onDeleteDevice}
+          onDelete={onDeletedDevice}
         />
         <DeviceForm
           open={openAddDeviceForm}

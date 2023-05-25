@@ -26,25 +26,25 @@ export default function BasicTable({ devices, onStateChanged, onDelete }) {
         <TableBody>
           {devices.map(device => (
             <TableRow
-              key={device.id}
+              key={device.deviceId}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell>
                 <Switch
                   checked={device.enabled}
                   onChange={event => {
-                    onStateChanged(device.id, event.target.checked);
+                    onStateChanged(device.deviceId, event.target.checked);
                   }}
                 />
               </TableCell>
-              <TableCell>{device.id}</TableCell>
+              <TableCell>{device.deviceId}</TableCell>
               <TableCell>{device.name}</TableCell>
               <TableCell>
                 <Tooltip title="Deletar">
                   <IconButton
                     aria-label="delete"
                     color="primary"
-                    onClick={() => onDelete(device.id)}
+                    onClick={() => onDelete(device.deviceId)}
                   >
                     <DeleteIcon />
                   </IconButton>

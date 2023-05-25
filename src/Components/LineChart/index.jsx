@@ -23,7 +23,7 @@ const LineChart: React.FC = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'transportation',
+        legend: 'data',
         legendOffset: 36,
         legendPosition: 'middle',
       }}
@@ -31,7 +31,7 @@ const LineChart: React.FC = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'count',
+        legend: 'consumo',
         legendOffset: -40,
         legendPosition: 'middle',
       }}
