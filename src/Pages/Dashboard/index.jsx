@@ -10,6 +10,8 @@ import Reports from '../../Layouts/Reports';
 import Devices from '../../Layouts/Devices';
 import Settings from '../../Layouts/Settings';
 import dayjs from 'dayjs';
+import { shallow } from 'zustand/shallow';
+import { useStore } from '../../store';
 
 const baseUrl = 'http://191.235.46.49:3000';
 const authorization = 'smart_plug';
@@ -160,6 +162,18 @@ const Dashbboard: React.FC = () => {
     variance: 0,
     cost: 0.0,
   });
+  const [username, updateUsername] = useStore(
+    state => [state.username, state.updateUsername],
+    shallow,
+  );
+  const [userId, updateUserId] = useStore(
+    state => [state.userId, state.updateUserId],
+    shallow,
+  );
+
+  console.log(username);
+
+  console.log(userId);
 
   React.useEffect(() => {
     const getDevices = async () => {
@@ -177,6 +191,8 @@ const Dashbboard: React.FC = () => {
       );
 
       const responses = await Promise.all(requests);
+
+      console.log(responses);
 
       const status = [];
       responses.forEach(resp => {
@@ -196,7 +212,6 @@ const Dashbboard: React.FC = () => {
     const data = {
       deviceId: id,
     };
-    console.log(data);
     axios
       .delete(`${baseUrl}/devices`, { data: data, ...config })
       .then(response => {
@@ -236,6 +251,7 @@ const Dashbboard: React.FC = () => {
               setDevices={setDevices}
               onDeleteDevice={onDeleteDevice}
               onAddDevice={onAddDevice}
+              devicesStatus={devicesStatus}
             />
           ) : (
             <Settings unitkWh={unitkWh} setUnitkWh={setUnitkWh} />

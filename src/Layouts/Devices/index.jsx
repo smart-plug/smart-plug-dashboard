@@ -14,6 +14,7 @@ import DeviceForm from '../../Components/DeviceForm';
 
 const Devices: React.FC = ({
   devices,
+  devicesStatus,
   setDevices,
   onDeleteDevice,
   onAddDevice,
@@ -44,6 +45,8 @@ const Devices: React.FC = ({
       setDevices(devices);
     }
   };
+
+  console.log(devicesStatus);
 
   return (
     <Card sx={{ margin: 8 }}>

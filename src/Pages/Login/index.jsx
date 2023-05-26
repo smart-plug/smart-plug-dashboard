@@ -4,6 +4,9 @@ import TextField from '@mui/material/TextField';
 import Header from '../../Components/Header';
 import Button from '@mui/material-next/Button';
 import { useNavigate } from 'react-router-dom';
+import { shallow } from 'zustand/shallow';
+
+import { useStore } from '../../store';
 
 import axios from 'axios';
 
@@ -16,6 +19,15 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [user, setUser] = useState('');
+  const [username, updateUsername] = useStore(
+    state => [state.username, state.updateUsername],
+    shallow,
+  );
+
+  const [userId, updateUserId] = useStore(
+    state => [state.userId, state.updateUserId],
+    shallow,
+  );
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -31,8 +43,11 @@ const Login: React.FC = () => {
         },
       )
       .then(response => {
-        console.log(response.data.response.user.userId);
-        navigate('/dashboard');
+        if (response.status == 200) {
+          updateUsername(user);
+          updateUserId(response.data.response.user.userId);
+          navigate('/dashboard');
+        }
       })
       .catch(error => {
         console.error(error);
