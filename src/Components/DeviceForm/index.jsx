@@ -62,12 +62,7 @@ const DeviceForm: React.FC = ({ open, onSave, onClose }) => {
             disableElevation
             sx={{ width: '350px', margin: '25px' }}
             onClick={() => {
-              if ((id != '') & (name != '')) {
-                resetState();
-                onSave({ enabled: false, deviceId: id, name: name });
-              } else {
-                alert('Todos os campos são obrigatórios');
-              }
+              onSave({ enabled: false, deviceId: id, name: name });
             }}
           >
             Salvar

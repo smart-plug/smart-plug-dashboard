@@ -11,7 +11,34 @@ import Switch from '@mui/material/Switch';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export default function BasicTable({ devices, onStateChanged, onDelete }) {
+export default function BasicTable({
+  devices,
+  devicesStatus,
+  onStateChanged,
+  onDelete,
+}) {
+  const [status, setStatus] = React.useState(devicesStatus);
+
+  const isEnabled = id => {
+    const index = status.findIndex(s => s.deviceId == id);
+    if (index == -1) {
+      return false;
+    } else {
+      return status[index].state;
+    }
+  };
+
+  const handleStatusChange = (id, state) => {
+    const index = status.findIndex(s => s.deviceId == id);
+    if (index == -1) {
+      setStatus(status.concat({ deviceId: id, state: state }));
+    } else {
+      status[index].state = state;
+      setStatus(status);
+    }
+    onStateChanged(id, state);
+  };
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -31,10 +58,10 @@ export default function BasicTable({ devices, onStateChanged, onDelete }) {
             >
               <TableCell>
                 <Switch
-                  checked={device.enabled}
-                  onChange={event => {
-                    onStateChanged(device.deviceId, event.target.checked);
-                  }}
+                  checked={isEnabled(device.deviceId)}
+                  onChange={event =>
+                    handleStatusChange(device.deviceId, event.target.checked)
+                  }
                 />
               </TableCell>
               <TableCell>{device.deviceId}</TableCell>

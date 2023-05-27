@@ -13,6 +13,9 @@ import dayjs from 'dayjs';
 import { shallow } from 'zustand/shallow';
 import { useStore } from '../../store';
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const baseUrl = 'http://191.235.46.49:3000';
 const authorization = 'smart_plug';
 
@@ -171,9 +174,10 @@ const Dashbboard: React.FC = () => {
     shallow,
   );
 
-  console.log(username);
-
-  console.log(userId);
+  const getDeviceName = deviceId => {
+    const index = devices.findIndex(device => device.deviceId == deviceId);
+    return devices[index].name;
+  };
 
   React.useEffect(() => {
     const getDevices = async () => {
@@ -185,24 +189,71 @@ const Dashbboard: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
-    const getStatus = async () => {
-      const requests = devices.map(device =>
-        axios.get(`${baseUrl}/status/${device.deviceId}`, config),
-      );
-
-      const responses = await Promise.all(requests);
-
-      console.log(responses);
-
+    const getStatus = () => {
       const status = [];
-      responses.forEach(resp => {
-        status.push(resp.data.response.status);
+      devices.forEach(device => {
+        axios
+          .get(`${baseUrl}/status/${device.deviceId}`, config)
+          .then(response => {
+            status.push(response.data.response.status);
+          })
+          .catch(error => {
+            status.push({ deviceId: device.deviceId, state: false });
+            toast.error(error.response.data.message);
+          });
       });
       setDevicesStatus(status);
     };
 
     getStatus();
   }, [devices]);
+
+  React.useEffect(() => {
+    const updateDashboardData = async () => {
+      const pieChart = [];
+      const lineChart = [];
+      var accumulated = 0;
+      var variance = 0;
+
+      for (const deviceId of filter.selectedDevices) {
+        const response = await axios.get(`${baseUrl}/consumption/${deviceId}`, {
+          params: {
+            startDate: filter.startDate.format('YYYY-MM-DD'),
+            endDate: filter.endDate.format('YYYY-MM-DD'),
+          },
+          ...config,
+        });
+        const data = response.data.response;
+        console.log(data);
+
+        const deviceName = getDeviceName(deviceId);
+        pieChart.push({
+          id: deviceName,
+          label: deviceName,
+          value: data.accumulatedConsumption,
+        });
+        lineChart.push({
+          id: deviceName,
+          data: data.consumptions.map(c => ({
+            x: c.reading,
+            y: c.consumption,
+          })),
+        });
+        accumulated = accumulated + data.accumulatedConsumption;
+        variance = variance + data.consumptionVariation;
+      }
+
+      setResult({
+        pie: pieChart,
+        line: lineChart,
+        accumulated: Math.round(accumulated),
+        variance: Math.round(variance),
+        cost: Math.round(accumulated * unitkWh),
+      });
+    };
+
+    updateDashboardData();
+  }, [filter, devices]);
 
   const onFilterChange = f => {
     setFilter(f);
@@ -220,6 +271,10 @@ const Dashbboard: React.FC = () => {
             device => device.deviceId != response.data.response.device.deviceId,
           ),
         );
+        toast.success(response.data.message);
+      })
+      .catch(error => {
+        toast.error(error.response.data.message);
       });
   };
 
@@ -228,9 +283,15 @@ const Dashbboard: React.FC = () => {
       deviceId: id,
       name: name,
     };
-    axios.post(`${baseUrl}/devices`, data, config).then(response => {
-      setDevices(devices.concat(response.data.response.device));
-    });
+    axios
+      .post(`${baseUrl}/devices`, data, config)
+      .then(response => {
+        setDevices(devices.concat(response.data.response.device));
+        toast.success(response.data.message);
+      })
+      .catch(error => {
+        toast.error(error.response.data.message);
+      });
   };
 
   return (
@@ -258,6 +319,7 @@ const Dashbboard: React.FC = () => {
           )}
         </Main>
       </div>
+      <ToastContainer position="bottom-right" />
     </Theme>
   );
 };

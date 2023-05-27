@@ -46,8 +46,6 @@ const Devices: React.FC = ({
     }
   };
 
-  console.log(devicesStatus);
-
   return (
     <Card sx={{ margin: 8 }}>
       <CardContent sx={{ padding: 6 }}>
@@ -71,6 +69,7 @@ const Devices: React.FC = ({
         </Grid>
         <DevicesTable
           devices={devices}
+          devicesStatus={devicesStatus}
           onStateChanged={onDeviceStateChanged}
           onDelete={onDeletedDevice}
         />
