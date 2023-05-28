@@ -15,7 +15,7 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-RUN npm build
+RUN npm run build
 
 FROM nginx
 
@@ -25,4 +25,4 @@ RUN rm -rf ./*
 
 COPY --from=builder /app/build .
 
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+ENTRYPOINT nginx -g daemon off
