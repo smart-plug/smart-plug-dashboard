@@ -16,7 +16,7 @@ import { useStore } from '../../store';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const baseUrl = 'http://191.235.46.49:3000';
+const baseUrl = 'http://20.226.198.26:3000';
 const authorization = 'smart_plug';
 
 const config = {
@@ -25,128 +25,6 @@ const config = {
     user_id: 1,
   },
 };
-
-const pieValues = [
-  {
-    id: 'java',
-    label: 'java',
-    value: 449,
-  },
-  {
-    id: 'stylus',
-    label: 'stylus',
-    value: 435,
-  },
-];
-
-const lineValues = [
-  {
-    id: 'japan',
-    data: [
-      {
-        x: 'plane',
-        y: 197,
-      },
-      {
-        x: 'helicopter',
-        y: 77,
-      },
-      {
-        x: 'boat',
-        y: 104,
-      },
-      {
-        x: 'train',
-        y: 86,
-      },
-      {
-        x: 'subway',
-        y: 107,
-      },
-      {
-        x: 'bus',
-        y: 18,
-      },
-      {
-        x: 'car',
-        y: 120,
-      },
-      {
-        x: 'moto',
-        y: 125,
-      },
-      {
-        x: 'bicycle',
-        y: 221,
-      },
-      {
-        x: 'horse',
-        y: 232,
-      },
-      {
-        x: 'skateboard',
-        y: 17,
-      },
-      {
-        x: 'others',
-        y: 115,
-      },
-    ],
-  },
-  {
-    id: 'france',
-    data: [
-      {
-        x: 'plane',
-        y: 172,
-      },
-      {
-        x: 'helicopter',
-        y: 116,
-      },
-      {
-        x: 'boat',
-        y: 176,
-      },
-      {
-        x: 'train',
-        y: 177,
-      },
-      {
-        x: 'subway',
-        y: 113,
-      },
-      {
-        x: 'bus',
-        y: 254,
-      },
-      {
-        x: 'car',
-        y: 250,
-      },
-      {
-        x: 'moto',
-        y: 190,
-      },
-      {
-        x: 'bicycle',
-        y: 235,
-      },
-      {
-        x: 'horse',
-        y: 83,
-      },
-      {
-        x: 'skateboard',
-        y: 247,
-      },
-      {
-        x: 'others',
-        y: 169,
-      },
-    ],
-  },
-];
 
 const Dashbboard: React.FC = () => {
   const [option, setOption] = useState(0);
@@ -253,7 +131,7 @@ const Dashbboard: React.FC = () => {
     };
 
     updateDashboardData();
-  }, [filter, devices]);
+  }, [filter]);
 
   const onFilterChange = f => {
     setFilter(f);
@@ -294,6 +172,21 @@ const Dashbboard: React.FC = () => {
       });
   };
 
+  const onDeviceStateChanged = (id, state) => {
+    const data = {
+      deviceId: id,
+      state: state,
+    };
+    axios
+      .post(`${baseUrl}/status`, data, config)
+      .then(response => {
+        toast.success(response.data.message);
+      })
+      .catch(error => {
+        toast.error(error.response.data.message);
+      });
+  };
+
   return (
     <Theme>
       <div className="Dashboard">
@@ -309,10 +202,10 @@ const Dashbboard: React.FC = () => {
           ) : option == 1 ? (
             <Devices
               devices={devices}
-              setDevices={setDevices}
+              devicesStatus={devicesStatus}
               onDeleteDevice={onDeleteDevice}
               onAddDevice={onAddDevice}
-              devicesStatus={devicesStatus}
+              onDeviceStateChanged={onDeviceStateChanged}
             />
           ) : (
             <Settings unitkWh={unitkWh} setUnitkWh={setUnitkWh} />

@@ -15,9 +15,9 @@ import DeviceForm from '../../Components/DeviceForm';
 const Devices: React.FC = ({
   devices,
   devicesStatus,
-  setDevices,
   onDeleteDevice,
   onAddDevice,
+  onDeviceStateChanged,
 }) => {
   const [openAddDeviceForm, setOpenAddDeviceForm] = React.useState(false);
 
@@ -36,14 +36,6 @@ const Devices: React.FC = ({
 
   const onCloseAddDeviceForm = () => {
     setOpenAddDeviceForm(false);
-  };
-
-  const onDeviceStateChanged = (id, enabled) => {
-    const index = devices.findIndex(d => d.deviceId == id);
-    if (index != -1) {
-      devices[index].enabled = enabled;
-      setDevices(devices);
-    }
   };
 
   return (

@@ -58,7 +58,7 @@ export default function BasicTable({
             >
               <TableCell>
                 <Switch
-                  checked={isEnabled(device.deviceId)}
+                  defaultChecked={isEnabled(device.deviceId)}
                   onChange={event =>
                     handleStatusChange(device.deviceId, event.target.checked)
                   }

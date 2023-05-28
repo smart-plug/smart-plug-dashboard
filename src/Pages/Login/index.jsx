@@ -12,7 +12,7 @@ import axios from 'axios';
 
 import './index.css';
 
-const baseUrl = 'http://191.235.46.49:3000';
+const baseUrl = 'http://20.226.198.26:3000';
 const authorization = 'smart_plug';
 
 const Login: React.FC = () => {
