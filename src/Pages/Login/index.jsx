@@ -7,12 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import { shallow } from 'zustand/shallow';
 
 import { useStore } from '../../store';
+import constants from '../../Config/constants';
 
 import axios from 'axios';
 
 import './index.css';
 
-const baseUrl = 'http://20.226.198.26:3000';
+const baseUrl = constants.api.baseUrl;
 const authorization = 'smart_plug';
 
 const Login: React.FC = () => {

@@ -12,11 +12,12 @@ import Settings from '../../Layouts/Settings';
 import dayjs from 'dayjs';
 import { shallow } from 'zustand/shallow';
 import { useStore } from '../../store';
+import constants from '../../Config/constants';
 
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const baseUrl = 'http://20.226.198.26:3000';
+const baseUrl = constants.api.baseUrl;
 const authorization = 'smart_plug';
 
 const config = {
