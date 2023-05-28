@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-plug-dashboard-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: smart-plug-dashboard
+      labels:
+        app: smart-plug-dashboard
+    spec:
+      containers:
+        - name: smart-plug-dashboard-container
+          image: smartplug.azurecr.io/smart-plug-dashboard-dev:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: smart-plug-dashboard-configmap
+      imagePullSecrets:
+        - name: acr-secret
+  selector:
+    matchLabels:
+      app: smart-plug-dashboard
