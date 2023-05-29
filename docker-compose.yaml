@@ -1,10 +1,10 @@
 version: "3.8"
 
 services:
-    app: 
-      container_name: smart-plug-dashboard-container
-      image: smart-plug-dashboard
-      build:
-        context: .
-      ports:
-        - 8080:80
+  app: 
+    container_name: smart-plug-dashboard-container
+    image: smart-plug-dashboard
+    build:
+      context: .
+    ports:
+      - 8080:80
