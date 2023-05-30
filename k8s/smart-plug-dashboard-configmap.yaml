@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: smart-plug-dashboard-configmap
 data:
-  API_BASE_URL: http://20.226.198.26:3000
+  API_BASE_URL: http://smart-plug-server.brazilsouth.cloudapp.azure.com:3000
