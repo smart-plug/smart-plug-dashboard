@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: smart-plug-dashboard-external-svc
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: smart-plug-dashboard
 spec:
   type: LoadBalancer
   ports:
