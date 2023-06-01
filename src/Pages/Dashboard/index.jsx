@@ -97,28 +97,29 @@ const Dashbboard: React.FC = () => {
       for (const deviceId of filter.selectedDevices) {
         const response = await axios.get(`${baseUrl}/consumption/${deviceId}`, {
           params: {
-            startDate: filter.startDate.format('YYYY-MM-DD'),
-            endDate: filter.endDate.format('YYYY-MM-DD'),
+            startDate: dayjs(
+              filter.startDate.format('YYYY-MM-DD'),
+            ).toISOString(),
+            endDate: dayjs(filter.endDate.format('YYYY-MM-DD')).toISOString(),
           },
           ...config,
         });
         const data = response.data.response;
-        console.log(data);
 
         const deviceName = getDeviceName(deviceId);
         pieChart.push({
           id: deviceName,
           label: deviceName,
-          value: data.accumulatedConsumption,
+          value: data.totalAccumulatedConsumption,
         });
         lineChart.push({
           id: deviceName,
           data: data.consumptions.map(c => ({
             x: c.reading,
-            y: c.consumption,
+            y: c.accumulatedConsumption,
           })),
         });
-        accumulated = accumulated + data.accumulatedConsumption;
+        accumulated = accumulated + data.totalAccumulatedConsumption;
         variance = variance + data.consumptionVariation;
       }
 
