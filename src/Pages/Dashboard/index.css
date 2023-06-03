@@ -1,9 +1,10 @@
 .Dashboard {
     display: grid;
-    grid-template-columns: 288px 1fr;
+    grid-template-columns: 18% 1fr;
     grid-template-areas: 
         "Menu Main";
-    justify-items: start;
+    /* justify-items: start; */
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    background-color: #f7f7f7;
 }

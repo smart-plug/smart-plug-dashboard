@@ -108,8 +108,8 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
       </div>
 
       <div className="MiddleGrid">
-        <Card sx={{ padding: 2, marginRight: 5 }}>
-          <CardContent sx={{ width: 950, height: 330 }}>
+        <Card className="LinePlotCard" sx={{ padding: 2, marginRight: 5 }}>
+          <CardContent sx={{ height: 330 }}>
             <Typography variant="h5" component="div">
               consumo
             </Typography>
@@ -117,8 +117,8 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
           </CardContent>
         </Card>
 
-        <Card sx={{ padding: 2 }}>
-          <CardContent sx={{ width: 400, height: 330 }}>
+        <Card className="PizzaPlotCard" sx={{ padding: 2 }}>
+          <CardContent sx={{ height: 330 }}>
             <Typography variant="h5" component="div">
               consumo
             </Typography>
@@ -128,7 +128,7 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
       </div>
 
       <div className="BottomGrid">
-        <Card sx={{ width: 200, height: 180, padding: 2, marginRight: 5 }}>
+        <Card sx={{ minWidth: 226, height: 224, padding: 2 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               acumulado
@@ -142,7 +142,7 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
           </CardContent>
         </Card>
 
-        <Card sx={{ width: 200, height: 180, padding: 2, marginRight: 5 }}>
+        <Card sx={{ minWidth: 226, height: 224, padding: 2 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               variação
@@ -156,7 +156,7 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
           </CardContent>
         </Card>
 
-        <Card sx={{ width: 240, height: 180, padding: 2 }}>
+        <Card sx={{ minWidth: 300, height: 224, padding: 2 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               custo
