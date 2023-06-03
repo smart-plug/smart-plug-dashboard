@@ -1,13 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
-html {
-  height: 100vh;
-  width: 100vw;
+* {
+  /* overflow-x: hidden; */
+  /* overflow-y: scroll; */
+  box-sizing: border-box;
 }
 
-body, #root, .App {
+html {
+  height: 100%;
+  width: 100%;
+  font-size: calc(11px + 0.390625vw);
+  overflow-x: hidden;
+}
+
+body,
+#root,
+.App {
   margin: 0;
   height: 100%;
   width: 100%;
+}
+
+h1 {
+  font-size: 1.8rem;
 }
