@@ -46,6 +46,12 @@
   width: calc(70% - 46px);
 }
 
+@media (max-width: 1532px) {
+  .BottomGrid {
+    width: 100%;
+  }
+}
+
 .Select {
   width: 300px;
 }
