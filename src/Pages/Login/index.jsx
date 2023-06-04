@@ -77,7 +77,7 @@ const Login: React.FC = () => {
               noValidate
               autoComplete="off"
             >
-              <div className="CentralizedRow">
+              <div className="">
                 <TextField
                   className="BoxFormInput"
                   error={false}
@@ -87,7 +87,7 @@ const Login: React.FC = () => {
                   value={user}
                 />
               </div>
-              <div className="CentralizedRow">
+              <div className="">
                 <TextField
                   error={false}
                   className="BoxFormInput"
@@ -98,7 +98,7 @@ const Login: React.FC = () => {
                   value={password}
                 />
               </div>
-              <div className="CentralizedRow">
+              <div className="">
                 <Button
                   size="large"
                   variant="filled"
