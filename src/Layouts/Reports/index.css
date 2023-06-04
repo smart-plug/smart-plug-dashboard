@@ -30,20 +30,24 @@
 .MiddleGrid {
   grid-area: c;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   display: flex;
+  flex: 1;
+  gap: 16px;
   flex-wrap: wrap;
   margin-bottom: 44px;
 }
 
 .BottomGrid {
   grid-area: f;
+  flex: 1;
+  gap: 32px;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   display: flex;
   /* padding-top: 30px; */
   flex-wrap: wrap;
-  width: calc(70% - 46px);
+  /* width: calc(70% - 46px); */
 }
 
 @media (max-width: 1532px) {
