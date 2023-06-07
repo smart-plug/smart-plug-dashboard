@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './index.css';
 import axios from 'axios';
 
@@ -58,6 +58,48 @@ const Dashbboard: React.FC = () => {
     return devices[index].name;
   };
 
+  const updateDashboardData = useCallback(async () => {
+    const pieChart = [];
+    const lineChart = [];
+    var accumulated = 0;
+    var variance = 0;
+
+    for (const deviceId of filter.selectedDevices) {
+      const response = await axios.get(`${baseUrl}/consumption/${deviceId}`, {
+        params: {
+          startDate: dayjs(filter.startDate.format('YYYY-MM-DD')).toISOString(),
+          endDate: dayjs(filter.endDate.format('YYYY-MM-DD')).toISOString(),
+        },
+        ...config,
+      });
+      const data = response.data.response;
+
+      const deviceName = getDeviceName(deviceId);
+      pieChart.push({
+        id: deviceName,
+        label: deviceName,
+        value: data.totalAccumulatedConsumption,
+      });
+      lineChart.push({
+        id: deviceName,
+        data: data.consumptions.map(c => ({
+          x: c.reading,
+          y: c.accumulatedConsumption,
+        })),
+      });
+      accumulated = accumulated + data.totalAccumulatedConsumption;
+      variance = variance + data.consumptionVariation;
+    }
+
+    setResult({
+      pie: pieChart,
+      line: lineChart,
+      accumulated: Math.round(accumulated),
+      variance: Math.round(variance),
+      cost: accumulated * unitkWh,
+    });
+  }, [filter]);
+
   React.useEffect(() => {
     const getDevices = async () => {
       const response = await axios.get(`${baseUrl}/devices`, config);
@@ -88,52 +130,8 @@ const Dashbboard: React.FC = () => {
   }, [devices]);
 
   React.useEffect(() => {
-    const updateDashboardData = async () => {
-      const pieChart = [];
-      const lineChart = [];
-      var accumulated = 0;
-      var variance = 0;
-
-      for (const deviceId of filter.selectedDevices) {
-        const response = await axios.get(`${baseUrl}/consumption/${deviceId}`, {
-          params: {
-            startDate: dayjs(
-              filter.startDate.format('YYYY-MM-DD'),
-            ).toISOString(),
-            endDate: dayjs(filter.endDate.format('YYYY-MM-DD')).toISOString(),
-          },
-          ...config,
-        });
-        const data = response.data.response;
-
-        const deviceName = getDeviceName(deviceId);
-        pieChart.push({
-          id: deviceName,
-          label: deviceName,
-          value: data.totalAccumulatedConsumption,
-        });
-        lineChart.push({
-          id: deviceName,
-          data: data.consumptions.map(c => ({
-            x: c.reading,
-            y: c.accumulatedConsumption,
-          })),
-        });
-        accumulated = accumulated + data.totalAccumulatedConsumption;
-        variance = variance + data.consumptionVariation;
-      }
-
-      setResult({
-        pie: pieChart,
-        line: lineChart,
-        accumulated: Math.round(accumulated),
-        variance: Math.round(variance),
-        cost: accumulated * unitkWh,
-      });
-    };
-
     updateDashboardData();
-  }, [filter]);
+  }, [filter, updateDashboardData]);
 
   const onFilterChange = f => {
     setFilter(f);
@@ -200,6 +198,7 @@ const Dashbboard: React.FC = () => {
               filter={filter}
               onFilterChange={onFilterChange}
               result={result}
+              refreshData={updateDashboardData}
             />
           ) : option == 1 ? (
             <Devices

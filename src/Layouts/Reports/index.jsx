@@ -16,8 +16,16 @@ import FormControl from '@mui/material/FormControl';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import { IconButton } from '@mui/material';
 
-const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
+const Reports: React.FC = ({
+  devices,
+  filter,
+  onFilterChange,
+  result,
+  refreshData,
+}) => {
   const [selectedDevices, setSelectedDevices] = React.useState(
     filter.selectedDevices,
   );
@@ -103,10 +111,17 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
             ))}
           </Select>
         </FormControl>
+
+        <IconButton size="large" onClick={refreshData}>
+          <RefreshIcon fontSize="inherit" />
+        </IconButton>
       </div>
 
       <div className="MiddleGrid">
-        <Card className="LinePlotCard" sx={{ padding: 2, flex: 1 }}>
+        <Card
+          className="LinePlotCard"
+          sx={{ padding: 2, flex: 1, overflow: 'visible' }}
+        >
           <CardContent sx={{ height: 330 }}>
             <Typography variant="h5" component="div">
               consumo

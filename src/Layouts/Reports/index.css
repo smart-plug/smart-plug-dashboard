@@ -10,6 +10,7 @@
   grid-area: a;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   -webkit-flex-wrap: wrap;
@@ -47,3 +48,7 @@
 .PizzaPlotCard {
   width: calc(30% - 20px);
 }
+
+/* .LinePlotCard {
+  overflow: visible !important;
+} */

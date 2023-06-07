@@ -2,13 +2,16 @@ import React from 'react';
 import './index.css';
 
 import { ResponsiveLine } from '@nivo/line';
+import { Chip } from '@mui/material';
 
 const LineChart: React.FC = ({ data }) => {
   return (
     <ResponsiveLine
       data={data}
-      margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
-      xScale={{ type: 'point' }}
+      enableArea={true}
+      margin={{ top: 25, right: 25, bottom: 60, left: 50 }}
+      xScale={{ type: 'time', format: '%Y-%m-%dT%H:%M:%S.%L%Z' }}
+      xFormat="time:%Y-%m-%dT%H:%M:%S.%L%Z"
       yScale={{
         type: 'linear',
         min: 'auto',
@@ -20,10 +23,8 @@ const LineChart: React.FC = ({ data }) => {
       axisTop={null}
       axisRight={null}
       axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: 'data',
+        tickValues: 5,
+        format: '%d/%m %H:%M',
         legendOffset: 36,
         legendPosition: 'middle',
       }}
@@ -31,11 +32,11 @@ const LineChart: React.FC = ({ data }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: 'consumo',
+        legend: 'kWh',
         legendOffset: -40,
         legendPosition: 'middle',
       }}
-      pointSize={10}
+      pointSize={2}
       pointColor={{ theme: 'background' }}
       pointBorderWidth={2}
       pointBorderColor={{ from: 'serieColor' }}
@@ -43,11 +44,11 @@ const LineChart: React.FC = ({ data }) => {
       useMesh={true}
       legends={[
         {
-          anchor: 'bottom-right',
-          direction: 'column',
+          anchor: 'top',
+          direction: 'row',
           justify: false,
-          translateX: 100,
-          translateY: 0,
+          translateX: 0,
+          translateY: -25,
           itemsSpacing: 0,
           itemDirection: 'left-to-right',
           itemWidth: 80,
