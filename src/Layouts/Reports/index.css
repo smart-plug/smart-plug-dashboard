@@ -1,18 +1,9 @@
 .Reports {
-  /* display: grid; */
   width: 100%;
-  /* height: 100%; */
-  /* padding-top: 80px; */
-  /* padding: 50px; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* grid-template-rows: 80px 50% 1fr;
-  grid-template-areas:
-    'a a b b'
-    'c c c c'
-    'f f f f'; */
-  /* margin: 80px; */
+  gap: 16px;
 }
 
 .TopGrid {
@@ -21,33 +12,26 @@
   justify-content: flex-start;
   display: flex;
   flex-wrap: wrap;
-  /* padding-bottom: 80px; */
   -webkit-flex-wrap: wrap;
-  margin-bottom: 44px;
-  /* width: 100%; */
+  gap: 16px;
 }
 
 .MiddleGrid {
   grid-area: c;
   flex-direction: row;
-  /* justify-content: space-between; */
   display: flex;
   flex: 1;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 44px;
 }
 
 .BottomGrid {
   grid-area: f;
   flex: 1;
-  gap: 32px;
+  gap: 16px;
   flex-direction: row;
-  /* justify-content: space-between; */
   display: flex;
-  /* padding-top: 30px; */
   flex-wrap: wrap;
-  /* width: calc(70% - 46px); */
 }
 
 @media (max-width: 1532px) {
@@ -56,18 +40,8 @@
   }
 }
 
-.Select {
-  width: 300px;
-}
-
-.DatePicker {
-  width: 30%;
-  min-width: 150px;
-  max-width: 300px;
-}
-
-.LinePlotCard {
-  width: calc(70% - 44px);
+.DatePicker, .Select {
+  flex: 1;
 }
 
 .PizzaPlotCard {

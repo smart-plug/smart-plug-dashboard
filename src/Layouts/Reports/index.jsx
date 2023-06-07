@@ -29,7 +29,6 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
       <div className="TopGrid">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
-            sx={{ marginRight: 2 }}
             className="DatePicker"
             label="Data inicial"
             defaultValue={startDate}
@@ -46,7 +45,6 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DatePicker
-            sx={{ marginRight: 2 }}
             className="DatePicker"
             label="Data final"
             defaultValue={endDate}
@@ -108,7 +106,7 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
       </div>
 
       <div className="MiddleGrid">
-        <Card className="LinePlotCard" sx={{ padding: 2, marginRight: 5 }}>
+        <Card className="LinePlotCard" sx={{ padding: 2, flex: 1 }}>
           <CardContent sx={{ height: 330 }}>
             <Typography variant="h5" component="div">
               consumo
