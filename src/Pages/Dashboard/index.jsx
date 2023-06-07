@@ -128,7 +128,7 @@ const Dashbboard: React.FC = () => {
         line: lineChart,
         accumulated: Math.round(accumulated),
         variance: Math.round(variance),
-        cost: Math.round(accumulated * unitkWh),
+        cost: accumulated * unitkWh,
       });
     };
 

@@ -160,7 +160,7 @@ const Reports: React.FC = ({ devices, filter, onFilterChange, result }) => {
               custo
             </Typography>
             <Typography variant="h3" component="div">
-              {result.cost}
+              {result.cost.toFixed(2)}
             </Typography>
             <Typography variant="h6" component="div">
               R$
