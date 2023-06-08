@@ -2,7 +2,6 @@ import React from 'react';
 import './index.css';
 
 import { ResponsiveLine } from '@nivo/line';
-import { Chip } from '@mui/material';
 
 const LineChart: React.FC = ({ data }) => {
   return (
