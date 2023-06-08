@@ -32,11 +32,11 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
+  gap: 24px;
 }
 
 .LoginButton {
-  width: 90%;
-  margin-top: 10px;
+  width: 100%;
 }
 
 .BoxForm {
@@ -44,10 +44,11 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  gap: 24px;
 }
 
 .BoxFormInput {
-  width: 90% !important;
+  width: 100%;
 }
 
 .CentralizedRow {

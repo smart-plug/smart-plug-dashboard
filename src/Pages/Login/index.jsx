@@ -71,44 +71,35 @@ const Login: React.FC = () => {
               onSubmit={handleSubmit}
               component="form"
               className="BoxForm"
-              sx={{
-                '& .MuiTextField-root': { m: 1, width: '25ch' },
-              }}
               noValidate
               autoComplete="off"
             >
-              <div className="">
-                <TextField
-                  className="BoxFormInput"
-                  error={false}
-                  id="outlined-required"
-                  label="Usuário"
-                  onChange={event => setUser(event.target.value)}
-                  value={user}
-                />
-              </div>
-              <div className="">
-                <TextField
-                  error={false}
-                  className="BoxFormInput"
-                  id="outlined-required"
-                  type="password"
-                  label="Senha"
-                  onChange={event => setPassword(event.target.value)}
-                  value={password}
-                />
-              </div>
-              <div className="">
-                <Button
-                  size="large"
-                  variant="filled"
-                  className="LoginButton"
-                  type="submit"
-                  value="submit"
-                >
-                  Entrar{' '}
-                </Button>
-              </div>
+              <TextField
+                className="BoxFormInput"
+                error={false}
+                id="outlined-required"
+                label="Usuário"
+                onChange={event => setUser(event.target.value)}
+                value={user}
+              />
+              <TextField
+                error={false}
+                className="BoxFormInput"
+                id="outlined-required"
+                type="password"
+                label="Senha"
+                onChange={event => setPassword(event.target.value)}
+                value={password}
+              />
+              <Button
+                size="large"
+                variant="filled"
+                className="LoginButton"
+                type="submit"
+                value="submit"
+              >
+                Entrar{' '}
+              </Button>
             </Box>
           </div>
         </div>
