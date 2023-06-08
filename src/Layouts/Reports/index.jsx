@@ -40,6 +40,7 @@ const Reports: React.FC = ({
             className="DatePicker"
             label="Data inicial"
             defaultValue={startDate}
+            format="DD/MM/YYYY"
             onChange={value => {
               setStartDate(value);
               onFilterChange({
@@ -56,6 +57,7 @@ const Reports: React.FC = ({
             className="DatePicker"
             label="Data final"
             defaultValue={endDate}
+            format="DD/MM/YYYY"
             onChange={value => {
               setEndDate(value);
               onFilterChange({
