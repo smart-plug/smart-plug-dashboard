@@ -7,10 +7,10 @@ const PieChart: React.FC = ({ data }) => {
   return (
     <ResponsivePie
       data={data}
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+      margin={{ top: 25, bottom: 80 }}
       innerRadius={0.5}
-      padAngle={0.7}
-      cornerRadius={3}
+      padAngle={3}
+      cornerRadius={2}
       activeOuterRadiusOffset={8}
       borderWidth={1}
       borderColor={{
@@ -26,6 +26,7 @@ const PieChart: React.FC = ({ data }) => {
         from: 'color',
         modifiers: [['darker', 2]],
       }}
+      arcLabel={d => `${d.value.toFixed(2)} kWh`}
       defs={[
         {
           id: 'dots',
@@ -44,56 +45,6 @@ const PieChart: React.FC = ({ data }) => {
           rotation: -45,
           lineWidth: 6,
           spacing: 10,
-        },
-      ]}
-      fill={[
-        {
-          match: {
-            id: 'ruby',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'c',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'go',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'python',
-          },
-          id: 'dots',
-        },
-        {
-          match: {
-            id: 'scala',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'lisp',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'elixir',
-          },
-          id: 'lines',
-        },
-        {
-          match: {
-            id: 'javascript',
-          },
-          id: 'lines',
         },
       ]}
       legends={[

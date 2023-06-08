@@ -149,7 +149,7 @@ const Reports: React.FC = ({
               acumulado
             </Typography>
             <Typography variant="h3" component="div">
-              {result.accumulated}
+              {result.accumulated.toFixed(2)}
             </Typography>
             <Typography variant="h6" component="div">
               kWh
@@ -163,7 +163,7 @@ const Reports: React.FC = ({
               variação
             </Typography>
             <Typography variant="h3" component="div">
-              {result.variance}
+              {result.variance.toFixed(2)}
             </Typography>
             <Typography variant="h6" component="div">
               kWh

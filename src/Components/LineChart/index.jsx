@@ -49,7 +49,7 @@ const LineChart: React.FC = ({ data }) => {
           justify: false,
           translateX: 0,
           translateY: -25,
-          itemsSpacing: 0,
+          itemsSpacing: 10,
           itemDirection: 'left-to-right',
           itemWidth: 80,
           itemHeight: 20,

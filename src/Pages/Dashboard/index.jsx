@@ -94,8 +94,8 @@ const Dashbboard: React.FC = () => {
     setResult({
       pie: pieChart,
       line: lineChart,
-      accumulated: Math.round(accumulated),
-      variance: Math.round(variance),
+      accumulated: accumulated,
+      variance: variance,
       cost: accumulated * unitkWh,
     });
   }, [filter]);
