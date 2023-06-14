@@ -37,7 +37,7 @@ const DeviceForm: React.FC = ({ open, onSave, onClose }) => {
           onClose();
         }}
       >
-        <Box sx={{ ...style, width: '400px' }}>
+        <Box sx={{ ...style, width: '462px' }}>
           <Typography variant="h5" component="div" sx={{ margin: '25px' }}>
             novo dispositivo
           </Typography>
